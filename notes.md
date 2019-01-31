@@ -1,3 +1,17 @@
+## 01/31/19
+
+* in AI you need to understand some linear alg, calculus, statistics, etc, in order to truly understand what's going on beneath the hood
+* commenatorial explosion:
+	* the primary problem in AI because you have to be smarter than trying to brute force your way through all combinations
+* jupyter notebook is perfect IDE for python(and other notebooks)
+	* Google Colab is the easiest way to do Jupyter Notebook
+	* right now we write program in text-editor, then use interpreter to run it
+	* the other approach with jupyter is using the browser to write code. The web server will give the code to python interpreter then sends back the result. In jupyter it's cool because the front-end notebook can be separate from the back-end server. The interpreter can be in Atlanta but your code will still be run.
+	* look into Colab by Google. They give you a jupyter platform and stores code onto ur google drive. Integrates well with GitHub.
+	* Anaconda distribution to setup jupyter and a whole series of other tools for data science and machine learning
+
+-----
+
 ## 01/30/19
 
 **Aim**

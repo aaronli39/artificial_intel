@@ -1,3 +1,67 @@
+## 02/04/19
+
+* you can custom set parameters(python doesn't have to be parameter-place restricted)
+* c is convenient for the machine, python is convenient for the programmer
+* python is about 100 times slower than java/c. this doesn't usually matter because we have so much computing power
+*
+
+```python
+def fred(a, b = 4):
+	return a / b
+print(fred(1, 2)) # 0.5
+print(fred(b = 3, a = 2)) # 0.6666666
+print(fred(3)) # a = 3, b is by default = 4
+
+a [1, 4, 2, 4, 6, 7, 2] # there are duplication
+b = set(a)
+print(b) # {1, 2, 4, 6, 7, 45.099, 45.098}
+c = list(b)
+print(c) # prints the list in a
+```
+
+* set properties:
+	* no duplicates
+	* to look up a value in a set is an O(1) process **this is the most valuable aspect of sets**
+* you can't depend on the ordering of sets
+
+## 02/01/19
+
+* tuples are special in Python and will allow you to understand how python does things
+* list are mutable
+* tuples are **immutable**
+* strings are immutable, in order to change characters you must make a new string, change the letter, and then return the new string
+
+```python
+A = [1, 5, "HI"]
+A[1] = 18
+# A = [1, 18, "HI"]
+
+Q = (1, 5)
+R, S = Q
+# R = 1, S = 5
+u, v = R, S
+# u = 1, v = 5
+R, S = S, R
+# easiest way to swap two variables
+
+# ----------------------------------
+DEF F(A, B):
+	return A / B;
+# but if B = 0, program will blow
+# you want this program to pass out 2 results; a quotient and a pass/fail result
+
+DEF F(A, B):
+	if b == 0:
+		return False, 0
+	return True, A / B
+success, Q = F(u ,v)
+
+```
+
+* you can't allow anythnig to happy, you must have an impposible action in order to know that something went wrong
+
+-----
+
 ## 01/31/19
 
 * in AI you need to understand some linear alg, calculus, statistics, etc, in order to truly understand what's going on beneath the hood

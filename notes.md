@@ -1,3 +1,20 @@
+## 02/06/19
+
+**Aim**: Hashing
+
+* log base 2 compression is extremely powerful(1,000,000 elements only require 20 searches)
+* mapping works by turning each character of a word into a corresponding number 1-26. Then, to convert it to one number, you multiple the first number by 26, the second by 26^2... etc. This **gaurantees** an unique number, but the number will be huge
+* this would assume you have an insane amount of memory, and then you would map each value of each word into the cooresponding place in the memory block. This is **O(1) operation**
+* you can just modulo a huge number with another number to shrink it. This small number is found by moduloing by the number of values you actually need. This is **hashing**
+* **collision** occurs on rare occasion when two modulos give the same location, and you just have to relocate it.
+* the point of a good hash function is to randomize the data(brooks and pprooks should be very different locations). You can use hashes to identify/tag a paper since each paper will produce different hash numbers.(serves as a signature)
+* sets can immediately tell you by telling you if it contains an element or not(*O(1)*)
+```python
+# $ python3 fred.py 45 brooks
+import sys
+sys.argv # ["fred.py", "45", "brooks"]
+```
+
 ## 02/04/19
 
 * you can custom set parameters(python doesn't have to be parameter-place restricted)

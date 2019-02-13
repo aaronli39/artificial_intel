@@ -1,3 +1,40 @@
+## 02/12/19
+```python
+a = Node(5)
+fred = a
+
+def fred(q):
+    
+```
+
+## 02/11/19
+
+* C was created to be almost as efficient but much easier to program in than assembly language
+
+```python
+import sys
+temp = sys.argv # ["harry.py", "fred.csv", "george.csv"]
+try:
+    # the U fills in the line endings with \n since different OS have different line endings
+    f = open(temp[1], "rU") 
+    lines = f.read().split("\n")
+    f.close()
+except:
+    print("error!")
+    return
+
+words = lines[0].split(",")
+
+ints = [int(x) for x in words]
+answers = [7, -5, 12]
+
+f = open(sys.argv[2], "w")
+toWrite = [str(x) for x in answers]
+f.write(",".join(toWrite) + "\n")
+f.close()
+
+```
+
 ## 02/06/19
 
 **Aim**: Hashing

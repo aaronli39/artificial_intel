@@ -1,10 +1,46 @@
+## 02/14/19
+
+* python can ask OS for memory, and when the program terminates, python's garbage collector will remove it
+
+## 02/13/19
+
+* priority queue
+* `nice fred` where fred is a large computational program and fred will use less memory since itll use a lot of CPU
+* with administrative priviledges, you can raise priority of a program. normal uses can only lower priority
+* unix was developed for small machines(multix was for the big computer) 
+
+**properties of priority queue tree**
+* parent has 0, 1, or 2 children
+* priority of parent is equal or greater than of children
+* all the levels are filled except for the last one, and the last one is filled left to right
+* root is always highest priority
+
+**process of rebalancing tree**
+* remove root(highest priority)
+* put last item in tree into root
+* look at the larger child of the new root, and swap it(this is called bubbling down)
+
+**process of adding to tree**
+* put the new element in its position node
+* bubble it up
+
+**array version of priority queue**
+* make array of n + 1 elements size
+* dont use the 0th element
+* 1st element is root, read left to right and fill in the new positions
+* subtracting:
+    * set smallest(last element) to position 1(root)
+    * find the children(2n and 2n + 1, swap with biggest)
+* adding:
+    * divide by 2 to bubble up
+
 ## 02/12/19
 ```python
 a = Node(5)
 fred = a
 
 def fred(q):
-    
+
 ```
 
 ## 02/11/19

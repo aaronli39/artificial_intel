@@ -1,3 +1,6 @@
+#! /usr/bin/python3
+import sys
+
 class Node:
     def __init__(self, data):
         self.value = data
@@ -6,6 +9,7 @@ class Node:
 
     def __str__(self):
         return str(self.value)
+
 
 class BinTree:
     def __init__(self, A=None):
@@ -85,19 +89,72 @@ class BinTree:
             return None
 
     def clearr(self, node):
-        if node.smaller: 
+        if node.smaller:
             self.clearr(node.smaller)
         node.smaller == None
         if node.equal_or_larger:
             self.clearr(node.equal_or_larger)
         node.equal_or_larger == None
 
+    def has_depth(self, V):
+        if self.root == None:
+            return None
+        else:
+            if self.root.value == V:
+                return 1
+            return 1 + self.depth(self.root, V)
+
+    def depth(self, node, val):
+        if node.value == val:
+            return 0
+        if node.smaller and val < node.value:
+            return 1 + self.depth(node.smaller, val)
+        elif node.smaller == None and val < node.value:
+            return 0
+        if node.equal_or_larger and val > node.value:
+            return 1 + self.depth(node.equal_or_larger, val)
+        elif node.equal_or_larger == None and val > node.value:
+            return 0
+
+
+def Process(inp, out):
+    try:
+        f = open(inp, "rU") 
+        lines = f.read().split("\n")
+        f.close()
+    except:
+        print("error occured!")
+        return
+
+    words = lines[0].split(",")
+    ints = [int(x) for x in words]
+    words = lines[1].split(",")
+    haz = [int(x) for x in words]
+
+    answers = []
+    temp = BinTree()
+    for i in ints: temp.insert(i)
+    for i in haz: answers.append(temp.has_depth(i))
+    print(sum(answers) / len(answers))
+    f = open(out, "w")
+    toWrite = [str(x) for x in answers]
+    f.write(",".join(toWrite) + "\n")
+    f.close()
+
+def main():
+    Process(sys.argv[1], sys.argv[2])
+
+main()
+
 # fred = BinTree()
 # fred.insert(10)
-# fred.insert(11)
+# fred.insert(15)
 # fred.insert(8)
 # fred.insert(9)
 # fred.insert(9)
+# fred.insert(11)
+# fred.insert(13)
+# fred.insert(17)
 # print(fred.has(10))
 # print(fred.has(11))
 # print(fred.has(9))
@@ -105,6 +162,11 @@ class BinTree:
 # print(fred.has(122))
 # print(fred.has(19))
 # print(fred.get_ordered_list())
+# print("\n\n")
+# print(fred.has_depth(8))
+# print(fred.has_depth(11))
+# print(fred.has_depth(17))
+# Process("inp.txt", "out.txt")
 # fred.clear()
 # print(fred.get_ordered_list())
 # print(fred.has(10))

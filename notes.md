@@ -1,3 +1,14 @@
+## 02/27/19
+
+**properties of priority queue**
+* smallest element at root
+* parents are smaller than or equal to children
+* things are left-justified
+
+## 02/25/19
+
+* there is a class of problems that machines cannot solve
+
 ## 02/14/19
 
 * python can ask OS for memory, and when the program terminates, python's garbage collector will remove it

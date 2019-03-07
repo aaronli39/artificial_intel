@@ -62,15 +62,15 @@ class Pqueue:
         while(left < self.size and right < self.size and
               (self.cmp_to(self.data[cur], self.data[left]) == 1 or self.cmp_to(self.data[cur], self.data[right]) == 1)):
             # if left smaller than right
-            if self.cmp_to(self.data[left], self.data[right]) == -1:
-                # swap left and current
-                self.data[cur], self.data[left] = self.data[left], self.data[cur]
-                cur = left
-                left, right = cur * 2 + 1, cur * 2 + 2
-            else:
+            if self.cmp_to(self.data[left], self.data[right]) == 1:
                 # right smaller so swap right and current
                 self.data[cur], self.data[right] = self.data[right], self.data[cur]
                 cur = right
+                left, right = cur * 2 + 1, cur * 2 + 2
+            else:
+                # swap left and current
+                self.data[cur], self.data[left] = self.data[left], self.data[cur]
+                cur = left
                 left, right = cur * 2 + 1, cur * 2 + 2
         return ret
 

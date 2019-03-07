@@ -1,3 +1,13 @@
+## 03/07/19
+
+**uninformed search/breadth first**:
+* no idea if you're getting closer or farther, unless you're on the target
+* frontier
+    * choose the closest node
+    * if not it, put it in explored, and use the next node in frontier. add all neighbors of the discarded node into the frontier
+    * 
+* explored set
+
 ## 03/06/19
 
 **Data types**:

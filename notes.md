@@ -1,3 +1,23 @@
+## 03/06/19
+
+**Data types**:
+* lists
+    * access any indice
+* dictionary
+    * smells, words, etc trigger certain memories
+* sets
+* singly linked list
+    * train of thought
+        * like a song: u cant sing it backwards
+* doubly linked list
+    * backtracking a train of thought
+* stack- LIFO
+* tree
+* queue
+* pqueue
+* graph
+* 
+
 ## 02/27/19
 
 **properties of priority queue**

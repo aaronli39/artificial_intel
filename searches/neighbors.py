@@ -108,16 +108,59 @@ class Pqueue:
     def internal_list(self):
         return self.data
 
+def ladder(words, length, start, end):
+    ret, steps, explored = [start], 1, set()
+    # start word ladder
+    if words.get(start):
+        queue = Pqueue(length, end)
+        for i in words.get(start):
+            queue.push([1, i])
+            explored.add(i)
+        if queue.peek() == end:
+            return [start, end]
+
+
+        frontier, explored, path, currNeighbors = [], set(), [], [start]
+        dict = (masterDict(len(start)))
+        while True:
+            # push neighbors onto frontier
+            for neighbor in currNeighbors:
+                push(frontier, (getCost(neighbor, target) + len(path), neighbor, path) )
+            # no neighbors means no word ladder for the start -> target
+            if len(frontier) == 0:
+                return [start, target]
+            shortest = pop(frontier)
+            print(shortest[1], shortest[2], shortest[2] + [shortest[1]])
+            if shortest[1] == target:
+                return shortest[2] + [shortest[1]]
+            else:
+                if shortest[1] not in explored:
+                    # add to explored words
+                    explored.add(shortest[1])
+                    path = shortest[2] + [shortest[1]]
+                    currNeighbors = [word for word in dict[shortest[1]] if word not in explored]
+                else:
+                    path = []
+                    currNeighbors = []
+
+
+        while queue.peek():
+            if queue.peek() == end:
+                ret.append(queue.pop())
+                return ret
+            elif 
+
 def do(inp, out, data, length):
     # vars to use
     alpha = "abcdefghijklmnopqrstuvwxyz"
     words = {}
     writeStuff = ""
     search = []
-    
     try:
         with open(inp, "rU") as inFile:
             search = inFile.read().split("\n")
+            start = search[0]
+            end = search[1]
     except:
         print("error reading input file")
         return
@@ -135,6 +178,8 @@ def do(inp, out, data, length):
 
         words[i] = list(neighbors)
     
+    result = ladder(words, length, start, end)
+
     # create write data
     if search[0] == "":
         print("input file empty")
@@ -171,14 +216,14 @@ def main():
     # do("inp.txt", "out.txt", data)
     # do(data)
 
-# main()
-a = Pqueue(4, "tail")
-a.push([1, "heal"])
-a.push([1, "heat"])
-a.push([1, "dead"])
-a.push([1, "lead"])
-a.push([1, "teal"])
-a.push([2, "teal"])
-a.push
-# print(comp([1, "head"], [1, "teal"], "tail"))
-print(a.internal_list())
+main()
+# a = Pqueue(4, "dead")
+# a.push([1, "heal"])
+# a.push([1, "heat"])
+# a.push([1, "dead"])
+# a.push([1, "lead"])
+# a.push([1, "teal"])
+# a.push([2, "bait"])
+# a.push
+# # print(comp([1, "head"], [1, "teal"], "tail"))
+# print(a.internal_list())

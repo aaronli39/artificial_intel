@@ -1,2 +1,2 @@
-head,12
-tail,12
+head,hear,heir,hair,hail,tail
+hate,have,hove,love

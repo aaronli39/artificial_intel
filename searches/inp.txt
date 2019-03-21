@@ -1,2 +1,2 @@
-head
-tail
+head,tail
+hate,love

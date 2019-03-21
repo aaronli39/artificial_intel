@@ -2,20 +2,28 @@
 
 import sys
 
-# default comparison
-def ord_cmp(a, b):
-    if a < b:
-        return -1
-    if a == b:
-        return 0
-    return 1
 
 # priority queue
 class Pqueue:
+    # default comparison
+    # a and b are lists [steps, word]
+    def ord_cmp(self, a, b, end):
+        ac, bc = 0, 0
+        for i in range(self.len): 
+            if a[1][i] == end[i]: ac += 1
+        for i in range(self.len): 
+            if b[1][i] == end[i]: bc += 1
+        if a[0] < b[0]: 
+            if ac > bc: return -1
+        elif a[0] == b[0] and ac == bc: return 0
+        else: return 0
+
     # init initializes the array, size, and comparator obj
-    def __init__(self, comparator=ord_cmp):
+    def __init__(self, length, result, comparator=ord_cmp):
         self.data = []
         self.size = 0
+        self.len = length
+        self.end = result
         self.cmp_to = comparator
 
     # push takes in 1 val, appends it, and bubbles the
@@ -77,7 +85,7 @@ class Pqueue:
     # look at next root
     def peek(self):
         if self.size == 0: return None
-        return self.data[0]
+        return self.data[0][1]
 
     # returns list representation of the queue
     def toList(self):

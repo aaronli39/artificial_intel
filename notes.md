@@ -1,3 +1,23 @@
+## 03/18/19
+
+* frontier is priority queue
+
+## 03/15/19
+
+**3 searches**:
+* uninformed search: the first path found will b the shortest cus its searching from closest to end
+
+**greedy vs astar**
+* greedy often will find the shortest route and with least cells explored(vs astar), but this isn't gauranteed.
+* astar: gauranteed to find the shortest route, but the cells explored will be between the large cells of uninformed and the short cells of greedy
+
+* driven by economics
+
+**for astar search**
+* the distance must be optimistic(understates the distance to get there) 
+* works best when euclidean distance is <= the best path
+* main difference between searches is the numerical formulas involved.
+
 ## 03/07/19
 
 **uninformed search/breadth first**:

@@ -143,7 +143,7 @@ def ladder(words, length, start, end):
                     path = []
                     currNeighbors = []
 
-
+        
         while queue.peek():
             if queue.peek() == end:
                 ret.append(queue.pop())
@@ -209,7 +209,7 @@ def main():
         with open("dictall.txt", "rU") as temp:
             data = set()
             # create set of all 4 letter words to pass on
-            data = {word for word in temp.read().strip().split("\n") if len(word) == length}
+            data = {word for word in temp.read().strip().split("\n") if len(word) <= length}
     except:
         print("error while opening file.")
     do(sys.argv[1], sys.argv[2], data, length)

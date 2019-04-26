@@ -1,3 +1,13 @@
+## AI for anyone
+
+* which phase might be the longest one? (gather data, research, etc) how long does this take?
+* how do you determine if training data is good enough for validation, since u cant train it too well or bad
+* 
+
+## 04/11/19
+
+* constraint-satisfaction problems
+
 ## 03/18/19
 
 * frontier is priority queue

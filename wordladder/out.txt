@@ -1,1 +1,5 @@
-head,haha,0
+head,heal,teal,tell,tall,tail
+hate,late,lave,love
+read,head
+hazy,lazy,lady,lads,bads,baas,bras,brag,brig,frig,frog
+head,ache

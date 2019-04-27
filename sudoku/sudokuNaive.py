@@ -27,6 +27,7 @@ def getBoard():
     return board
 
 board = getBoard()
+print(board)
 
 # base case if the board is not solved yet
 def is_solved(row, col):
@@ -75,26 +76,17 @@ def valid_list(r, c):
     
 def get_smallest():
     temp = is_solved(0, 0)
-    ret = valid_list(temp[0], temp[1])
+    ret = [temp[0], temp[1], valid_list(temp[0], temp[1])]
     print(board)
-    for row in range(0, 10):
-        for col in range(0, 10):
+    for row in range(0, 9):
+        for col in range(0, 9):
             if board[row][col] == 0:
-                if len(valid_list(row, col)) <= len(ret): ret = valid_list(row, col) 
+                if len(valid_list(row, col)) <= len(ret[2]): 
+                    ret = [row, col, valid_list(row, col)]
     return ret
 
-print(get_smallest())
-
-# smarter algo 1: fill in cells we are CERTAIN of
-for row in range(0, 10):
-    for col in range(0, 10):
-        if board[row][col] == 0:
-            temp = valid_list(row, col)
-            # print(temp)
-            if len(temp) == 1:
-                board[row][col] = temp[0]
-
-# recursive solver
+# -----------------------------------------------------------------------
+# Naive algorithm
 def solve():
     row, col = 0, 0
     global backtracks
@@ -115,46 +107,73 @@ def solve():
         # reassign the cell
         backtracks += 1
         board[row][col] = 0
-
     return False
+# ----------------------------------------------------------------------
 
-# use least guesses
-def solve2():
+
+# ----------------------------------------------------------------------
+# smarter algo 1: fill in cells we are CERTAIN of
+# this only helps for easy/medium boards 
+def solve1(state):
+    if state == 0:
+        for i in range(81):
+            for row in range(0, 9):
+                for col in range(0, 9):
+                    if board[row][col] == 0:
+                        temp = valid_list(row, col)
+                        # print(temp)
+                        if len(temp) == 1:
+                            board[row][col] = temp[0]
     row, col = 0, 0
+    global backtracks
     # if all cells are assigned then the sudoku is already solved
     a = is_solved(row, col)
     if a[2]: return True
     row = a[0]
     col = a[1]
-    global backtracks
-    global board
-    global board_state
 
     lis = valid_list(row, col)
     for i in lis:
-        board_state.append(board)
         # check if i is a valid cell
         board[row][col] = i
 
-        # smarter algo 1: fill in cells we are CERTAIN of
-        for rows in range(0, 9):
-            for cols in range(0, 9):
-                if board[rows][cols] == 0:
-                    temp = valid_list(rows, cols)
-                    if len(temp) == 1:
-                        board[rows][cols] = temp[0]
+        # backtracking
+        if solve1(1):
+            return True
+        # reassign the cell
+        backtracks += 1
+        board[row][col] = 0
+
+    return False
+# ------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------
+# smarter algo 2: use the smallest guesses 
+def solve2():
+    # if all cells are assigned then the sudoku is already solved
+    temp = get_smallest()
+    a = is_solved(0, 0)
+    if a[2]: return True
+    row = temp[0]
+    col = temp[1]
+    global backtracks
+
+    for i in temp[2]:
+        # check if i is a valid cell
+        board[row][col] = i
+
         # backtracking
         if solve2():
             return True
         # reassign the cell
         backtracks += 1
         board[row][col] = 0
-        print(board_state)
-        board = board_state[len(board_state) - 1]
     return False
+# -------------------------------------------------------------------------
 
 def write():
-    solve()
+    solve1(0)
     print(backtracks)
     # name_of_solved_board = name_of_board.replace('unsolved', 'solved') + '\n'
     # out.write(name_of_solved_board)

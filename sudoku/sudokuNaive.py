@@ -1,6 +1,7 @@
 #! /usr/bin/python3
 
 import sys
+
 inp = open(sys.argv[1], 'r')
 out = open(sys.argv[2], 'w')
 name_of_board = sys.argv[3]
@@ -67,14 +68,26 @@ def is_safe(n, r, c):
 
 def valid_list(r, c):
     ret = []
-    for i in range(1, 10):
+    for i in range(0, 10):
         if is_safe(i, r, c):
             ret.append(i)
     return ret
+    
+def get_smallest():
+    temp = is_solved(0, 0)
+    ret = valid_list(temp[0], temp[1])
+    print(board)
+    for row in range(0, 10):
+        for col in range(0, 10):
+            if board[row][col] == 0:
+                if len(valid_list(row, col)) <= len(ret): ret = valid_list(row, col) 
+    return ret
+
+print(get_smallest())
 
 # smarter algo 1: fill in cells we are CERTAIN of
-for row in range(0, 9):
-    for col in range(0, 9):
+for row in range(0, 10):
+    for col in range(0, 10):
         if board[row][col] == 0:
             temp = valid_list(row, col)
             # print(temp)
@@ -105,6 +118,7 @@ def solve():
 
     return False
 
+# use least guesses
 def solve2():
     row, col = 0, 0
     # if all cells are assigned then the sudoku is already solved
@@ -140,7 +154,7 @@ def solve2():
     return False
 
 def write():
-    solve2()
+    solve()
     print(backtracks)
     # name_of_solved_board = name_of_board.replace('unsolved', 'solved') + '\n'
     # out.write(name_of_solved_board)

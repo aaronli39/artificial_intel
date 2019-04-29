@@ -2,7 +2,9 @@
 
 * which phase might be the longest one? (gather data, research, etc) how long does this take?
 * how do you determine if training data is good enough for validation, since u cant train it too well or bad
-* 
+
+* haroon@
+* junaid@aiforanyone2
 
 ## 04/11/19
 

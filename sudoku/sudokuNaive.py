@@ -77,7 +77,6 @@ def valid_list(r, c):
 def get_smallest():
     temp = is_solved(0, 0)
     ret = [temp[0], temp[1], valid_list(temp[0], temp[1])]
-    print(board)
     for row in range(0, 9):
         for col in range(0, 9):
             if board[row][col] == 0:
@@ -168,13 +167,13 @@ def solve2():
             return True
         # reassign the cell
         backtracks += 1
+        print(backtracks)
         board[row][col] = 0
     return False
 # -------------------------------------------------------------------------
 
 def write():
-    solve1(0)
-    print(backtracks)
+    solve2()
     # name_of_solved_board = name_of_board.replace('unsolved', 'solved') + '\n'
     # out.write(name_of_solved_board)
     for i in range(9):

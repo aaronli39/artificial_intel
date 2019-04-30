@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Sudoku Results</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row text-center mt-5 mb-3">
+            <div class="col">
+                <h1>Aaron's Sudoku Solver</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col text-center">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td style="width: 15%">Naive</td>
+                            <td>Start from top left corner, and find the next open cell, take a guess, and go on. If
+                                there is a conflict, backtrack.</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 15%">Semi-Smarter</td>
+                            <td>Same as naive except that to start off, fill in cells with only 1 guess.</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 15%">Smarter</td>
+                            <td>Instead of looking for first open cell, look for the cell with the smallest number of
+                                guesses, and start from there. Then go through all the other cells the same way and
+                                backtrack if needed.</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 15%"><b>Notes</b></td>
+                            <td>I spent a lot of time trying to add a lot of different heuristics such as removing
+                                guesses from neighbors, filling in forced cells after using the cell with the smallest
+                                guesses, etc. I ended up not being able to get it all to work together. Also, in
+                                hindsight I should have used a dictionary to store the board. Due to me doing this all
+                                recursively and having a 2d array as a board, there are a lot of complications and it is
+                                now too late to redo.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row ml-1 mr-1">
+            <div class="col text-center">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Naive</th>
+                            <th>Semi-smarter</th>
+                            <th>Smarter</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="width: 15%">A1</td>
+                            <td>t=0.024s b=260</td>
+                            <td>t=0.010s b=0 r=&infin;</td>
+                            <td>t=0.019s b=0 r=&infin;</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 15%">A2</td>
+                            <td>t=0.327s b=27917</td>
+                            <td>t=0.215s b=11753 r=2.38</td>
+                            <td>t=0.098s b=19 r=1469.32</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 15%">A3</td>
+                            <td>t=0.163s b=10616</td>
+                            <td>t=0.199s b=9817 r=1.08</td>
+                            <td>t=0.417s b=520 r=20.42</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 15%">A4</td>
+                            <td>t=0.458s b=39975</td>
+                            <td>t=0.317s b=39975 r=1</td>
+                            <td>t=0.128s b=30 r=1332.50</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 15%">A5</td>
+                            <td>t=0.105s b=6964</td>
+                            <td>t=0.112s b=6964 r=1</td>
+                            <td>t=0.161s b=118 r=59.02</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 15%">A6</td>
+                            <td>t=0.617s b=49498</td>
+                            <td>t=0.598s b=49498 r=1</td>
+                            <td>t=7.063s b=12261 r=4.04</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 15%">A7</td>
+                            <td>t=28.937s b=2482069</td>
+                            <td>t=29.577s b=2482069</td>
+                            <td>t=492.677s b=59580 r=41.72</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 15%">A8</td>
+                            <td>t=223.003s b=19029872</td>
+                            <td>t=220.173s b=19029872</td>
+                            <td>t=41.657s b=72980 r=260.75</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
